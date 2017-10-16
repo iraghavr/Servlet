@@ -1,11 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	version="3.1">
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
 
-	<display-name>Servlet</display-name>
+    <display-name>Servlet</display-name>
 
-	
+
+    <!-- Context Param -->
+    <context-param>
+        <param-name>author</param-name>
+        <param-value>autumn_zen</param-value>
+    </context-param>
+    <context-param>
+        <param-name>domain</param-name>
+        <param-value>google.com</param-value>
+    </context-param>
+    <!-- Welcome Servlet -->
+    <servlet>
+        <servlet-name>Welcome</servlet-name>
+        <servlet-class>com.autumn.zen.java.WelcomeHttpServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Welcome</servlet-name>
+        <url-pattern>/welcome</url-pattern>
+    </servlet-mapping>
+
+    <!-- Get Servlet -->
+    <servlet>
+        <servlet-name>Get</servlet-name>
+        <servlet-class>com.autumn.zen.java.GetServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Get</servlet-name>
+        <url-pattern>/get</url-pattern>
+    </servlet-mapping>
+
+    <!-- Post Servlet -->
+    <servlet>
+        <servlet-name>Post</servlet-name>
+        <servlet-class>com.autumn.zen.java.PostServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Post</servlet-name>
+        <url-pattern>/post</url-pattern>
+    </servlet-mapping>
+
+    <!-- Display Request Header Servlet -->
+    <servlet>
+        <servlet-name>DisplayHeader</servlet-name>
+        <servlet-class>com.autumn.zen.java.DisplayRequestHeader</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DisplayHeader</servlet-name>
+        <url-pattern>/displayHeader</url-pattern>
+    </servlet-mapping>
+
+    <!-- Set Response Header Servlet -->
+    <servlet>
+        <servlet-name>SetHeader</servlet-name>
+        <servlet-class>com.autumn.zen.java.SetResponseHeader</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SetHeader</servlet-name>
+        <url-pattern>/setHeader</url-pattern>
+    </servlet-mapping>
+
+    <!-- Send Redirect -->
+    <servlet>
+        <servlet-name>Redirect</servlet-name>
+        <servlet-class>com.autumn.zen.java.RedirectServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Redirect</servlet-name>
+        <url-pattern>/redirect</url-pattern>
+    </servlet-mapping>
+
+    <!-- Init Servlet -->
+    <servlet>
+        <servlet-name>Init</servlet-name>
+        <servlet-class>com.autumn.zen.java.InitServlet</servlet-class>
+        <init-param>
+            <param-name>user</param-name>
+            <param-value>autumn_zen</param-value>
+        </init-param>
+        <init-param>
+            <param-name>encode</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Init</servlet-name>
+        <url-pattern>/init</url-pattern>
+    </servlet-mapping>
+
+
+    <!--Log Filter-->
+    <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>com.autumn.zen.java.LogFilter</filter-class>
+        <init-param>
+            <param-name>website</param-name>
+            <param-value>autumnzen.com</param-value>
+        </init-param>
+        <init-param>
+            <param-name>author</param-name>
+            <param-value>autumnzen</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!-- Error Handler Servlet-->
+    <servlet>
+        <servlet-name>ErrorHandler</servlet-name>
+        <servlet-class>com.autumn.zen.java.ErrorHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErrorHandler</servlet-name>
+        <url-pattern>/errorHandler</url-pattern>
+    </servlet-mapping>
+
+    <!-- Error-code Page -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorHandler</location>
+    </error-page>
+
+    <!-- Exception-type Page -->
+    <error-page>
+        <exception-type>
+            java.lang.Throwable
+        </exception-type>
+        <location>/errorHandler</location>
+    </error-page>
+
+
+
 
 </web-app>
